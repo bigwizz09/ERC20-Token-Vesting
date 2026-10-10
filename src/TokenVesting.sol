@@ -83,8 +83,8 @@ contract TokenVesting {
     }
 
     function vestedAmount(uint256 scheduleId) public view returns (uint256) {
-        require(schedule.beneficiary != address(0), TokenVesting__ScheduleNotFound());
         Schedule memory schedule = s_schedules[scheduleId];
+        require(schedule.beneficiary != address(0), TokenVesting__ScheduleNotFound());
 
         if (schedule.revoked) {
             return schedule.totalAmount;
